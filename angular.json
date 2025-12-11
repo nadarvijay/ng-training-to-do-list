@@ -32,7 +32,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css"
             ],
             "scripts": []
           },
@@ -91,7 +92,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css"
             ],
             "scripts": []
           }

@@ -1,0 +1,20 @@
+.header {
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-header {
+    .title-container {
+        display: flex;
+
+        .logo {
+            .custom-logo {
+                background-color: #B90D4B;
+            }
+        }
+    }
+
+}
+
+.right-header {}
