@@ -11,23 +11,54 @@
             </div>
         </div>
     </div>
+
     <div class="pagination-container">
         <div class="slds-button-group" role="group">
-            <div>
-                <button class="slds-button slds-button_neutral slds-button_first">First</button>
-            </div>
-            <div>
-                <button class="slds-button slds-button_neutral slds-button_middle">Prev</button>
-            </div>
-            <div>
-                <button class="slds-button slds-button_neutral slds-button_middle">1</button>
-            </div>
-            <div>
-                <button class="slds-button slds-button_neutral slds-button_middle">Next</button>
-            </div>
-            <div>
-                <button class="slds-button slds-button_neutral slds-button_last">Last</button>
-            </div>
+            <button class="slds-button slds-button_neutral slds-button_first custom-pagination-btn">
+                <span class="slds-icon_container slds-icon-utility-announcement"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#jump_to_top"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                </span>
+                First
+            </button>
+            <button class="slds-button slds-button_neutral slds-button_middle custom-pagination-btn">
+                <span class="slds-icon_container slds-icon-utility-announcement"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                </span>
+                Prev
+            </button>
+
+            <button
+                class="slds-button slds-button_neutral slds-button_middle custom-pagination-btn page-indicator">1</button>
+
+            <button class="slds-button slds-button_neutral slds-button_middle custom-pagination-btn">
+                <span class="slds-icon_container slds-icon-utility-announcement"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                </span>
+                Next
+            </button>
+
+            <button class="slds-button slds-button_neutral slds-button_last custom-pagination-btn">
+                <span class="slds-icon_container slds-icon-utility-announcement"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#jump_to_bottom"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                </span>
+                Last
+            </button>
         </div>
     </div>
 </div>

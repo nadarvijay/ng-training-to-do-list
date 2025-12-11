@@ -2,6 +2,63 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: #E5E5E5;
+    background-color: #F5F5F5;
     height: 10%;
+    padding: 30px;
+
+    .pagination-container {
+        .custom-pagination-btn {
+            min-width: 90px;
+            height: 38px;
+            font-size: 18px;
+            font-weight: 400;
+            background-color: #FAFAFA !important;
+            border-color: #8C8C8C !important;
+            color: #767C81 !important;
+
+            &:disabled {
+                background-color: #E0E0E0 !important;
+                border-color: #C4C4C4 !important;
+                color: #A1A1A1 !important;
+                cursor: not-allowed;
+                transform: none !important;
+            }
+
+            &:disabled:hover {
+                background-color: #E0E0E0 !important;
+                border-color: #C4C4C4 !important;
+            }
+        }
+
+        .custom-pagination-btn:hover {
+            background-color: #FFD16A !important;
+            border-color: #FFD16A !important;
+        }
+
+        .custom-pagination-btn {
+            outline: none !important;
+        }
+
+        .custom-pagination-btn:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .custom-pagination-btn:active {
+            transform: scale(0.94);
+            background-color: #F3C452 !important;
+        }
+
+        .page-indicator {
+            pointer-events: none;
+            cursor: default !important;
+            background-color: #FAFAFA !important;
+            color: #333 !important;
+        }
+
+        .page-indicator:hover {
+            background-color: #FAFAFA !important;
+        }
+
+    }
 }
