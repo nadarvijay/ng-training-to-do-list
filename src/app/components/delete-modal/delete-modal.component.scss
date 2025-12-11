@@ -1,0 +1,20 @@
+.delete-modal-header {
+    background: #e60000 !important; // Red
+    color: white;
+
+    h1 {
+        color: white !important;
+    }
+}
+
+.delete-btn {
+    min-width: 120px;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+}
+
+/* 3️⃣ Remove Footer Border */
+.delete-footer {
+    border-top: none !important;
+    background-color: #FFFFFF;
+}

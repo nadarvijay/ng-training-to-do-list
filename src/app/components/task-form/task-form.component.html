@@ -1,1 +1,218 @@
-<p>task-form works!</p>
+<div class="task-form-container">
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container custom-modal">
+            <button class="slds-button slds-button_icon slds-modal__close">
+                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Cancel and close</span>
+            </button>
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">New Task</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                <form class="slds-form slds-form_stacked">
+
+                    <!-- ROW 1 — Assigned To + Status -->
+                    <div class="slds-grid slds-gutters slds-wrap">
+
+                        <!-- Assigned To -->
+                        <div class="slds-form-element slds-col slds-size_1-of-2">
+                            <label class="slds-form-element__label" for="combobox-id-1" id="combobox-label-id-1">
+                                <abbr class="slds-required" title="required">*</abbr>Assigned To</label>
+                            <div class="slds-form-element__control">
+                                <div class="slds-combobox_container">
+                                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click custom-combobox"
+                                        [ngClass]="{ 'slds-is-open': isAssignedOpen }">
+                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                            role="none">
+                                            <div role="combobox" tabindex="0"
+                                                class="slds-input_faux slds-combobox__input"
+                                                aria-labelledby="combobox-label-id-1" id="combobox-id-1-selected-value"
+                                                aria-controls="listbox-id-1" aria-expanded="false"
+                                                aria-haspopup="listbox" (click)="toggleAssigned()">
+                                                <span class="slds-truncate" id="combobox-value-id-1">{{
+                                                    selectedAssigned
+                                                    }}</span>
+                                            </div>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                                    aria-hidden="true">
+                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down">
+                                                    </use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div id="listbox-id-1"
+                                            class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                            role="listbox" aria-label="Placeholder for Dropdown Items" tabindex="0"
+                                            aria-busy="false" *ngIf="isAssignedOpen">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <li *ngFor="let item of assignedOptions" role="presentation"
+                                                    class="slds-listbox__item">
+                                                    <div id="option1"
+                                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                        role="option"
+                                                        (click)="selectAssigned(item); $event.stopPropagation()">
+                                                        <span
+                                                            class="slds-media__figure slds-listbox__option-icon"></span>
+                                                        <span class="slds-media__body">
+                                                            <span class="" title="Accounts">{{ item }}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="slds-form-element slds-col slds-size_1-of-2">
+                            <label class="slds-form-element__label" for="combobox-id-2" id="combobox-label-id-2">
+                                <abbr class="slds-required" title="required">*</abbr>Status</label>
+                            <div class="slds-form-element__control">
+                                <div class="slds-combobox_container">
+                                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click custom-combobox"
+                                        [ngClass]="{ 'slds-is-open': isStatusOpen }">
+                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                            role="none">
+                                            <div role="combobox" tabindex="0"
+                                                class="slds-input_faux slds-combobox__input"
+                                                aria-labelledby="combobox-label-id-2" id="combobox-id-2-selected-value"
+                                                aria-controls="listbox-id-2" aria-expanded="false"
+                                                aria-haspopup="listbox"
+                                                (click)="toggleStatus(); $event.stopPropagation()">
+                                                <span class="slds-truncate" id="combobox-value-id-2">{{
+                                                    selectedStatus
+                                                    }}</span>
+                                            </div>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                                    aria-hidden="true">
+                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down">
+                                                    </use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div id="listbox-id-2"
+                                            class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                            role="listbox" aria-label="Placeholder for Dropdown Items" tabindex="0"
+                                            aria-busy="false" *ngIf="isStatusOpen">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <li *ngFor="let item of statusOptions" role="presentation"
+                                                    class="slds-listbox__item">
+                                                    <div id="option2"
+                                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                        role="option"
+                                                        (click)="selectStatus(item); $event.stopPropagation()">
+                                                        <span
+                                                            class="slds-media__figure slds-listbox__option-icon"></span>
+                                                        <span class="slds-media__body">
+                                                            <span class="" title="Accounts">{{ item }}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ROW 2 — Due Date + Priority -->
+                    <div class="slds-grid slds-gutters slds-m-top_medium slds-wrap">
+
+                        <!-- Due Date (SLDS Date Picker Style) -->
+                        <div class="slds-col slds-size_1-of-2 custom-date-picker">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="dueDate">Due Date</label>
+                                <div class="slds-form-element__control">
+                                    <input id="dueDate" type="date" class="slds-input" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Priority -->
+                        <div class="slds-form-element slds-col slds-size_1-of-2">
+                            <label class="slds-form-element__label" for="combobox-id-3" id="combobox-label-id-3">
+                                <abbr class="slds-required" title="required">*</abbr>Priority</label>
+                            <div class="slds-form-element__control">
+                                <div class="slds-combobox_container">
+                                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click custom-combobox"
+                                        [ngClass]="{ 'slds-is-open': isPriorityOpen }">
+                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                            role="none">
+                                            <div role="combobox" tabindex="0"
+                                                class="slds-input_faux slds-combobox__input"
+                                                aria-labelledby="combobox-label-id-3" id="combobox-id-3-selected-value"
+                                                aria-controls="listbox-id-3" aria-expanded="false"
+                                                aria-haspopup="listbox" (click)="togglePriority()">
+                                                <span class="slds-truncate" id="combobox-value-id-3">{{
+                                                    selectedPriority
+                                                    }}</span>
+                                            </div>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                                    aria-hidden="true">
+                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down">
+                                                    </use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div id="listbox-id-3"
+                                            class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                            role="listbox" aria-label="Placeholder for Dropdown Items" tabindex="0"
+                                            aria-busy="false" *ngIf="isPriorityOpen">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <li *ngFor="let item of priorityOptions" role="presentation"
+                                                    class="slds-listbox__item">
+                                                    <div id="option3"
+                                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                        role="option" (click)="selectPriority(item)">
+                                                        <span
+                                                            class="slds-media__figure slds-listbox__option-icon"></span>
+                                                        <span class="slds-media__body">
+                                                            <span class="" title="Accounts">{{ item }}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ROW 3 — Description -->
+                    <div class="slds-m-top_medium">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="comments">Description</label>
+                            <div class="slds-form-element__control">
+                                <textarea id="comments" class="slds-textarea"
+                                    placeholder="Enter comments..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+                <button class="slds-button slds-button_brand">Save</button>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</div>
