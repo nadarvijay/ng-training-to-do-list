@@ -14,12 +14,12 @@
         </div>
 
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <p>Do you want to delete task TaskName?</p>
+            <p>Do you want to delete task <strong>{{ this.task?.assignedTo }}</strong>?</p>
         </div>
 
         <div class="slds-modal__footer delete-footer">
-            <button class="slds-button slds-button_neutral delete-btn">No</button>
-            <button class="slds-button slds-button_brand delete-btn">Yes</button>
+            <button class="slds-button slds-button_neutral delete-btn" (click)="closeModal()">No</button>
+            <button class="slds-button slds-button_brand delete-btn" (click)="confirmDelete()">Yes</button>
         </div>
 
     </div>

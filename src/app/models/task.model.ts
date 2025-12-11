@@ -1,5 +1,5 @@
 export interface Task {
-    id: number;
+    id?: string;
     assignedTo: string;
     status: string;
     dueDate: string;

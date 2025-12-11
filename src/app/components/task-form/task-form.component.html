@@ -2,7 +2,7 @@
     <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
         class="slds-modal slds-fade-in-open">
         <div class="slds-modal__container custom-modal">
-            <button class="slds-button slds-button_icon slds-modal__close">
+            <button class="slds-button slds-button_icon slds-modal__close" (click)="closeModal()">
                 <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                 </svg>
@@ -135,7 +135,8 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="dueDate">Due Date</label>
                                 <div class="slds-form-element__control">
-                                    <input id="dueDate" type="date" class="slds-input" />
+                                    <input id="dueDate" name="dueDate" type="date" class="slds-input"
+                                        [(ngModel)]="dueDate" />
                                 </div>
                             </div>
                         </div>
@@ -199,8 +200,8 @@
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="comments">Description</label>
                             <div class="slds-form-element__control">
-                                <textarea id="comments" class="slds-textarea"
-                                    placeholder="Enter comments..."></textarea>
+                                <textarea id="comments" name="description" class="slds-textarea"
+                                    placeholder="Enter comments..." [(ngModel)]="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -209,8 +210,9 @@
             </div>
 
             <div class="slds-modal__footer">
-                <button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
-                <button class="slds-button slds-button_brand">Save</button>
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close"
+                    (click)="closeModal()">Cancel</button>
+                <button class="slds-button slds-button_brand" (click)="submit()">Save</button>
             </div>
         </div>
     </section>

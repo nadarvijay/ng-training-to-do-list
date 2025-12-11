@@ -8,6 +8,6 @@
 
 <main class="main-container">
   <app-task-list></app-task-list>
-  @if(isFormOpen){<app-task-form></app-task-form>}
-  @if(isDeleteOpen){<app-delete-modal></app-delete-modal>}
+  <app-task-form *ngIf="(modalService.modalState$ | async) === 'taskForm'"></app-task-form>
+  <app-delete-modal *ngIf="(modalService.modalState$ | async) === 'delete'"></app-delete-modal>
 </main>

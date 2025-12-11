@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { Task } from '../../models/task.model';
-import { TASK_DATA } from '../../constants/tasks.data';
+import { TaskService } from '../../services/task.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-task-data-table',
@@ -12,9 +13,20 @@ import { TASK_DATA } from '../../constants/tasks.data';
 })
 export class TaskDataTableComponent {
 
-  tasks: Task[] = TASK_DATA
+  tasks: Task[] = []
   showMenu = false;
   selectedTask: Task | null = null;
+
+  constructor(
+    private taskService: TaskService,
+    private modalService: ModalService
+  ) { }
+
+  ngOnInit() {
+    this.taskService.tasks$.subscribe(tasks => {
+      this.tasks = tasks;
+    });
+  }
 
   dropdownPosition = {
     top: '0px',
@@ -41,7 +53,7 @@ export class TaskDataTableComponent {
   }
 
   deleteTask(task: any) {
-    console.log('Delete:', task);
+    this.modalService.openDeleteModal(task)
     this.showMenu = false;
   }
 

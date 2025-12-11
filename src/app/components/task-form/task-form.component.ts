@@ -1,29 +1,44 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
+import { TaskService } from '../../services/task.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss'
 })
 export class TaskFormComponent {
 
-  // ----- Assigned To -----
+  constructor(
+    private modalService: ModalService,
+    private taskService: TaskService
+  ) { }
+
+  // Assigned To
   isAssignedOpen = false;
   selectedAssigned = 'Select a User';
   assignedOptions = ['Accounts', 'Reports', 'Contacts', 'Files', 'Groups', 'Leads', 'Notes'];
 
-  // ----- Status -----
+  // Status
   isStatusOpen = false;
   selectedStatus = 'Select Status';
   statusOptions = ['Not Started', 'In Progress', 'Completed'];
 
-  // ----- Priority -----
+  // Priority
   isPriorityOpen = false;
   selectedPriority = 'Select Priority';
   priorityOptions = ['Low', 'Normal', 'High'];
+
+  // Description
+  description: string = '';
+
+  // Due Date
+  dueDate: string = '';
+
 
   // ---------- Dropdown Toggles ----------
   toggleAssigned() {
@@ -74,6 +89,24 @@ export class TaskFormComponent {
       this.isStatusOpen = false;
       this.isPriorityOpen = false;
     }
+  }
+
+  // Close Modal
+  closeModal() {
+    this.modalService.close();
+  }
+
+  // Add/Edit Task
+  submit() {
+    this.taskService.addTask({
+      status: this.selectedStatus,
+      assignedTo: this.selectedAssigned,
+      dueDate: this.dueDate,
+      priority: this.selectedPriority,
+      comments: this.description,
+    })
+
+    this.closeModal();
   }
 
 }
