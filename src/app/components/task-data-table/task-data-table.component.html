@@ -200,13 +200,13 @@
 
     <ul class="slds-dropdown__list" role="menu">
         <li class="slds-dropdown__item" role="presentation">
-            <a role="menuitem" (click)="editTask(selectedTask)">
+            <a role="menuitem" (click)="selectedTask && editTask(selectedTask)">
                 <span class="slds-truncate">Edit</span>
             </a>
         </li>
 
         <li class="slds-dropdown__item" role="presentation">
-            <a role="menuitem" class="delete-item" (click)="deleteTask(selectedTask)">
+            <a role="menuitem" class="delete-item" (click)="selectedTask && deleteTask(selectedTask)">
                 <span class="slds-truncate">Delete</span>
             </a>
         </li>

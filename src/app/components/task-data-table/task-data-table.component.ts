@@ -13,10 +13,6 @@ import { ModalService } from '../../services/modal.service';
 })
 export class TaskDataTableComponent {
 
-  tasks: Task[] = []
-  showMenu = false;
-  selectedTask: Task | null = null;
-
   constructor(
     private taskService: TaskService,
     private modalService: ModalService
@@ -27,6 +23,10 @@ export class TaskDataTableComponent {
       this.tasks = tasks;
     });
   }
+
+  tasks: Task[] = []
+  showMenu = false;
+  selectedTask: Task | null = null;
 
   dropdownPosition = {
     top: '0px',
@@ -47,13 +47,13 @@ export class TaskDataTableComponent {
   }
 
 
-  editTask(task: any) {
+  editTask(task: Task) {
     console.log('Edit:', task);
     this.modalService.openEditForm(task);
     this.showMenu = false;
   }
 
-  deleteTask(task: any) {
+  deleteTask(task: Task) {
     this.modalService.openDeleteModal(task)
     this.showMenu = false;
   }

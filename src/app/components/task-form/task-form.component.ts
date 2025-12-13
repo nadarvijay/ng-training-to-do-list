@@ -27,6 +27,19 @@ export class TaskFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // Event to Close on outside click of Dropdown
+    document.addEventListener('click', (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const inside = target.closest('.custom-combobox');
+
+      if (!inside) {
+        this.isAssignedOpen = false;
+        this.isStatusOpen = false;
+        this.isPriorityOpen = false;
+      }
+    });
+
     combineLatest([
       this.modalService.modalState$,
       this.modalService.selectedTask$
@@ -122,17 +135,6 @@ export class TaskFormComponent implements OnInit {
   selectPriority(item: string) {
     this.selectedPriority = item;
     this.isPriorityOpen = false;
-  }
-
-  // Close on outside click
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: any) {
-    const inside = event.target.closest('.custom-combobox');
-    if (!inside) {
-      this.isAssignedOpen = false;
-      this.isStatusOpen = false;
-      this.isPriorityOpen = false;
-    }
   }
 
   // Reset Form

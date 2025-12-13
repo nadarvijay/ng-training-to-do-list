@@ -18,7 +18,7 @@ export class TaskService {
   pageSize$ = this.pageSizeSubject.asObservable();
   currentPage$ = this.currentPageSubject.asObservable();
 
-  //PAGINATED TASKS
+  // PAGINATED TASKS
   pagedTasks$ = combineLatest([
     this.tasks$,
     this.pageSize$,
