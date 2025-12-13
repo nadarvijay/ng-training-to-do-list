@@ -49,6 +49,7 @@ export class TaskDataTableComponent {
 
   editTask(task: any) {
     console.log('Edit:', task);
+    this.modalService.openEditForm(task);
     this.showMenu = false;
   }
 

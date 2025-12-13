@@ -19,7 +19,7 @@ export class DeleteModalComponent {
     public modalService: ModalService,
     private taskService: TaskService
   ) {
-    this.modalService.deleteTask$.subscribe(task => {
+    this.modalService.selectedTask$.subscribe(task => {
       this.task = task;
     });
   }

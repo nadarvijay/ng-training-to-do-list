@@ -1,2 +1,2 @@
 
-export type ModalType = 'taskForm' | 'delete' | null;
+export type ModalType = 'addForm' | 'editForm' | 'delete' | null;

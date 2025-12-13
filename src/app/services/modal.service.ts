@@ -11,20 +11,27 @@ export class ModalService {
   private modalState = new BehaviorSubject<ModalType>(null);
   modalState$ = this.modalState.asObservable();
 
-  private deleteTaskSubject = new BehaviorSubject<Task | null>(null);
-  deleteTask$ = this.deleteTaskSubject.asObservable();
+  private selectedTaskSubject = new BehaviorSubject<Task | null>(null);
+  selectedTask$ = this.selectedTaskSubject.asObservable();
 
-  openTaskForm() {
-    this.modalState.next('taskForm');
+
+  openAddForm() {
+    this.selectedTaskSubject.next(null);
+    this.modalState.next('addForm');
+  }
+
+  openEditForm(task: Task) {
+    this.selectedTaskSubject.next(task);
+    this.modalState.next('editForm');
   }
 
   openDeleteModal(task: Task) {
-    this.deleteTaskSubject.next(task);
+    this.selectedTaskSubject.next(task);
     this.modalState.next('delete');
   }
 
   close() {
     this.modalState.next(null);
-    this.deleteTaskSubject.next(null);
+    this.selectedTaskSubject.next(null);
   }
 }

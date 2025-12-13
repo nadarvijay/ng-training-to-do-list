@@ -12,6 +12,6 @@ export class HeaderComponent {
   constructor(private modalService: ModalService) { }
 
   openCreateTask() {
-    this.modalService.openTaskForm();
+    this.modalService.openAddForm();
   }
 }
