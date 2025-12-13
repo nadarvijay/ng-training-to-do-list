@@ -28,17 +28,7 @@ export class TaskFormComponent implements OnInit {
   ngOnInit(): void {
 
     // Event to Close on outside click of Dropdown
-    document.addEventListener('click', (event: MouseEvent) => {
-      const target = event.target as HTMLElement | null;
-      if (!target) return;
-      const inside = target.closest('.custom-combobox');
-
-      if (!inside) {
-        this.isAssignedOpen = false;
-        this.isStatusOpen = false;
-        this.isPriorityOpen = false;
-      }
-    });
+    document.addEventListener('click', this.onDocumentClick);
 
     combineLatest([
       this.modalService.modalState$,
@@ -54,7 +44,7 @@ export class TaskFormComponent implements OnInit {
           this.selectedStatus = task.status;
           this.selectedPriority = task.priority;
           this.dueDate = task.dueDate;
-          this.description = task.comments;
+          this.comment = task.comments;
         }
       });
 
@@ -83,7 +73,7 @@ export class TaskFormComponent implements OnInit {
   priorityOptions = ['Low', 'Normal', 'High'];
 
   // Description
-  description: string = '';
+  comment: string = '';
 
   // Due Date
   dueDate: string = '';
@@ -96,7 +86,6 @@ export class TaskFormComponent implements OnInit {
       this.selectedPriority !== PRIORITY_DEFAULT
     );
   }
-
 
   //Dropdown Toggles
   toggleAssigned() {
@@ -143,7 +132,7 @@ export class TaskFormComponent implements OnInit {
     this.selectedStatus = STATUS_DEFAULT;
     this.selectedPriority = PRIORITY_DEFAULT;
     this.dueDate = '';
-    this.description = '';
+    this.comment = '';
     this.selectedTask = null;
   }
 
@@ -168,7 +157,7 @@ export class TaskFormComponent implements OnInit {
         status: this.selectedStatus,
         priority: this.selectedPriority,
         dueDate: this.dueDate,
-        comments: this.description
+        comments: this.comment
       });
     } else {
       this.taskService.addTask({
@@ -176,15 +165,27 @@ export class TaskFormComponent implements OnInit {
         status: this.selectedStatus,
         priority: this.selectedPriority,
         dueDate: this.dueDate,
-        comments: this.description
+        comments: this.comment
       });
     }
 
     this.closeModal();
   }
 
+  private onDocumentClick = (event: MouseEvent) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    const inside = target.closest('.custom-combobox');
+    if (!inside) {
+      this.isAssignedOpen = false;
+      this.isStatusOpen = false;
+      this.isPriorityOpen = false;
+    }
+  };
 
   ngOnDestroy(): void {
+    document.removeEventListener('click', this.onDocumentClick);
     this.destroy$.next();
     this.destroy$.complete();
   }

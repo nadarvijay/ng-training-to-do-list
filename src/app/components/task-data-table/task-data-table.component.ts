@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { ModalService } from '../../services/modal.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-task-data-table',
@@ -11,7 +12,7 @@ import { ModalService } from '../../services/modal.service';
   templateUrl: './task-data-table.component.html',
   styleUrl: './task-data-table.component.scss'
 })
-export class TaskDataTableComponent {
+export class TaskDataTableComponent implements OnDestroy {
 
   constructor(
     private taskService: TaskService,
@@ -19,14 +20,17 @@ export class TaskDataTableComponent {
   ) { }
 
   ngOnInit() {
-    this.taskService.pagedTasks$.subscribe(tasks => {
-      this.tasks = tasks;
-    });
+    this.taskService.pagedTasks$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(tasks => {
+        this.tasks = tasks;
+      });
   }
 
   tasks: Task[] = []
   showMenu = false;
   selectedTask: Task | null = null;
+  private destroy$ = new Subject<void>();
 
   dropdownPosition = {
     top: '0px',
@@ -64,5 +68,9 @@ export class TaskDataTableComponent {
     if (!insideMenu) this.showMenu = false;
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 }
