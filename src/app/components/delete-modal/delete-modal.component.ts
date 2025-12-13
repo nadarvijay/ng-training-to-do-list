@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../services/task.service';
@@ -12,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './delete-modal.component.html',
   styleUrl: './delete-modal.component.scss'
 })
-export class DeleteModalComponent implements OnDestroy {
+export class DeleteModalComponent implements OnInit, OnDestroy {
 
   task: Task | null = null;
   private destroy$ = new Subject<void>();
@@ -20,7 +20,9 @@ export class DeleteModalComponent implements OnDestroy {
   constructor(
     public modalService: ModalService,
     private taskService: TaskService
-  ) {
+  ) { }
+
+  ngOnInit(): void {
     this.modalService.selectedTask$
       .pipe(takeUntil(this.destroy$))
       .subscribe(task => {
