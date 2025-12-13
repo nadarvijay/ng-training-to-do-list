@@ -5,17 +5,14 @@ import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 
 class MockTaskService {
-  // Subjects we control
   totalPagesSubject = new BehaviorSubject<number>(1);
   currentPageSubject = new BehaviorSubject<number>(1);
   pageSizeSubject = new BehaviorSubject<number>(10);
 
-  // Exposed observables (read-only)
   totalPages$ = this.totalPagesSubject.asObservable();
   currentPage$ = this.currentPageSubject.asObservable();
   pageSize$ = this.pageSizeSubject.asObservable();
 
-  // Spy methods
   setPageSize = jasmine.createSpy('setPageSize');
   goToFirst = jasmine.createSpy('goToFirst');
   prevPage = jasmine.createSpy('prevPage');

@@ -16,10 +16,12 @@ export class HeaderComponent {
     public taskService: TaskService
   ) { }
 
+  // Add New Task Handler
   openCreateTask() {
     this.modalService.openAddForm();
   }
 
+  // Refresh Button Handler
   handleRefresh() {
     this.taskService.resetState();
   }

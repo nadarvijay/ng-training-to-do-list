@@ -6,7 +6,9 @@
                 <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                 </svg>
-                <span class="slds-assistive-text">Cancel and close</span>
+                <span class="slds-assistive-text">
+                    Cancel and close
+                </span>
             </button>
             <div class="slds-modal__header">
                 <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">
@@ -22,7 +24,8 @@
                         <!-- Assigned To -->
                         <div class="slds-form-element slds-col slds-size_1-of-2">
                             <label class="slds-form-element__label" for="combobox-id-1" id="combobox-label-id-1">
-                                <abbr class="slds-required" title="required">*</abbr>Assigned To</label>
+                                <abbr class="slds-required" title="required">*</abbr>Assigned To
+                            </label>
                             <div class="slds-form-element__control">
                                 <div class="slds-combobox_container">
                                     <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click custom-combobox"
@@ -34,9 +37,9 @@
                                                 aria-labelledby="combobox-label-id-1" id="combobox-id-1-selected-value"
                                                 aria-controls="listbox-id-1" aria-expanded="false"
                                                 aria-haspopup="listbox" (click)="toggleAssigned()">
-                                                <span class="slds-truncate" id="combobox-value-id-1">{{
-                                                    selectedAssigned
-                                                    }}</span>
+                                                <span class="slds-truncate" id="combobox-value-id-1">
+                                                    {{selectedAssigned}}
+                                                </span>
                                             </div>
                                             <span
                                                 class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
@@ -61,7 +64,9 @@
                                                         <span
                                                             class="slds-media__figure slds-listbox__option-icon"></span>
                                                         <span class="slds-media__body">
-                                                            <span class="" title="Accounts">{{ item }}</span>
+                                                            <span class="" title="Accounts">
+                                                                {{ item }}
+                                                            </span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -75,7 +80,8 @@
                         <!-- Status -->
                         <div class="slds-form-element slds-col slds-size_1-of-2">
                             <label class="slds-form-element__label" for="combobox-id-2" id="combobox-label-id-2">
-                                <abbr class="slds-required" title="required">*</abbr>Status</label>
+                                <abbr class="slds-required" title="required">*</abbr>Status
+                            </label>
                             <div class="slds-form-element__control">
                                 <div class="slds-combobox_container">
                                     <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click custom-combobox"
@@ -88,9 +94,9 @@
                                                 aria-controls="listbox-id-2" aria-expanded="false"
                                                 aria-haspopup="listbox"
                                                 (click)="toggleStatus(); $event.stopPropagation()">
-                                                <span class="slds-truncate" id="combobox-value-id-2">{{
-                                                    selectedStatus
-                                                    }}</span>
+                                                <span class="slds-truncate" id="combobox-value-id-2">
+                                                    {{selectedStatus}}
+                                                </span>
                                             </div>
                                             <span
                                                 class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
@@ -115,7 +121,9 @@
                                                         <span
                                                             class="slds-media__figure slds-listbox__option-icon"></span>
                                                         <span class="slds-media__body">
-                                                            <span class="" title="Accounts">{{ item }}</span>
+                                                            <span class="" title="Accounts">
+                                                                {{ item }}
+                                                            </span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -134,7 +142,9 @@
                         <!-- Due Date -->
                         <div class="slds-col slds-size_1-of-2 custom-date-picker">
                             <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="dueDate">Due Date</label>
+                                <label class="slds-form-element__label" for="dueDate">
+                                    Due Date
+                                </label>
                                 <div class="slds-form-element__control">
                                     <input id="dueDate" name="dueDate" type="date" class="slds-input"
                                         [(ngModel)]="dueDate" />
@@ -145,7 +155,8 @@
                         <!-- Priority -->
                         <div class="slds-form-element slds-col slds-size_1-of-2">
                             <label class="slds-form-element__label" for="combobox-id-3" id="combobox-label-id-3">
-                                <abbr class="slds-required" title="required">*</abbr>Priority</label>
+                                <abbr class="slds-required" title="required">*</abbr>Priority
+                            </label>
                             <div class="slds-form-element__control">
                                 <div class="slds-combobox_container">
                                     <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click custom-combobox"
@@ -157,9 +168,9 @@
                                                 aria-labelledby="combobox-label-id-3" id="combobox-id-3-selected-value"
                                                 aria-controls="listbox-id-3" aria-expanded="false"
                                                 aria-haspopup="listbox" (click)="togglePriority()">
-                                                <span class="slds-truncate" id="combobox-value-id-3">{{
-                                                    selectedPriority
-                                                    }}</span>
+                                                <span class="slds-truncate" id="combobox-value-id-3">
+                                                    {{selectedPriority}}
+                                                </span>
                                             </div>
                                             <span
                                                 class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
@@ -183,7 +194,9 @@
                                                         <span
                                                             class="slds-media__figure slds-listbox__option-icon"></span>
                                                         <span class="slds-media__body">
-                                                            <span class="" title="Accounts">{{ item }}</span>
+                                                            <span class="" title="Accounts">
+                                                                {{ item }}
+                                                            </span>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -199,7 +212,9 @@
                     <!-- ROW 3 — Description -->
                     <div class="slds-m-top_medium">
                         <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="comments">Description</label>
+                            <label class="slds-form-element__label" for="comments">
+                                Description
+                            </label>
                             <div class="slds-form-element__control">
                                 <textarea id="comments" name="comment" class="slds-textarea"
                                     placeholder="Enter comments..." [(ngModel)]="comment"></textarea>
@@ -211,9 +226,12 @@
             </div>
 
             <div class="slds-modal__footer">
-                <button class="slds-button slds-button_neutral" aria-label="Cancel and close"
-                    (click)="closeModal()">Cancel</button>
-                <button class="slds-button slds-button_brand" (click)="submit()" [disabled]="!isFormValid">Save</button>
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" (click)="closeModal()">
+                    Cancel
+                </button>
+                <button class="slds-button slds-button_brand" (click)="submit()" [disabled]="!isFormValid">
+                    Save
+                </button>
             </div>
         </div>
     </section>

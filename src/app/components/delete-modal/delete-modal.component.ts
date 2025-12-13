@@ -30,10 +30,12 @@ export class DeleteModalComponent implements OnInit, OnDestroy {
       });
   }
 
+  // Close Modal
   closeModal() {
     this.modalService.close();
   }
 
+  // Delete the Selected Task
   confirmDelete() {
     if (!this.task) return;
 
@@ -41,6 +43,7 @@ export class DeleteModalComponent implements OnInit, OnDestroy {
     this.modalService.close();
   }
 
+  // on Component Destroy
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
