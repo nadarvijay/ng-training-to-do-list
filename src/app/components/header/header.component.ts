@@ -19,4 +19,8 @@ export class HeaderComponent {
   openCreateTask() {
     this.modalService.openAddForm();
   }
+
+  handleRefresh() {
+    this.taskService.resetState();
+  }
 }

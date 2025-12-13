@@ -2,7 +2,8 @@
     <div class="slds-form-element">
         <div class="slds-form-element__control">
             <div class="slds-select_container">
-                <select class="slds-select" id="select-01" (change)="handleSelect($event)">
+                <select class="slds-select" id="select-01" [value]="taskService.pageSize$|async"
+                    (change)="handleSelect($event)">
                     <option value="5">5</option>
                     <option value="10" selected>10</option>
                     <option value="20">20</option>
@@ -37,8 +38,9 @@
                 Prev
             </button>
 
-            <button class="slds-button slds-button_neutral slds-button_middle custom-pagination-btn page-indicator">{{
-                taskService.currentPage$ | async }}</button>
+            <button class="slds-button slds-button_neutral slds-button_middle custom-pagination-btn page-indicator">
+                {{taskService.currentPage$ | async }}
+            </button>
 
             <button class="slds-button slds-button_neutral slds-button_middle custom-pagination-btn" (click)="next()"
                 [disabled]="isLastPage">

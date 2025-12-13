@@ -41,7 +41,7 @@ export class TaskService {
   // ---- CRUD ----
   addTask(task: Task) {
     const newTask = { ...task, id: crypto.randomUUID() };
-    this.tasksSubject.next([...this.tasksSubject.value, newTask]);
+    this.tasksSubject.next([newTask, ...this.tasksSubject.value]);
   }
 
   updateTask(updatedTask: Task) {
@@ -85,4 +85,10 @@ export class TaskService {
   goToLast(totalPages: number) {
     this.currentPageSubject.next(totalPages);
   }
+
+  resetState() {
+    this.pageSizeSubject.next(10);
+    this.currentPageSubject.next(1);
+  }
+
 }
