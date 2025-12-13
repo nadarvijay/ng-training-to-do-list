@@ -7,6 +7,10 @@ import { Task } from '../../models/task.model';
 import { ModalType } from '../../models/modal.model';
 import { Subject, combineLatest, takeUntil } from 'rxjs';
 
+const ASSIGNED_DEFAULT = "Select a User";
+const STATUS_DEFAULT = "Select a User";
+const PRIORITY_DEFAULT = "Select a User";
+
 @Component({
   selector: 'app-task-form',
   standalone: true,
@@ -52,17 +56,17 @@ export class TaskFormComponent implements OnInit {
 
   // Assigned To
   isAssignedOpen = false;
-  selectedAssigned = 'Select a User';
+  selectedAssigned = ASSIGNED_DEFAULT;
   assignedOptions = ['Accounts', 'Reports', 'Contacts', 'Files', 'Groups', 'Leads', 'Notes'];
 
   // Status
   isStatusOpen = false;
-  selectedStatus = 'Select Status';
+  selectedStatus = STATUS_DEFAULT;
   statusOptions = ['Not Started', 'In Progress', 'Completed'];
 
   // Priority
   isPriorityOpen = false;
-  selectedPriority = 'Select Priority';
+  selectedPriority = PRIORITY_DEFAULT;
   priorityOptions = ['Low', 'Normal', 'High'];
 
   // Description
@@ -71,10 +75,18 @@ export class TaskFormComponent implements OnInit {
   // Due Date
   dueDate: string = '';
 
+  // Getter function for isFormValid
+  get isFormValid(): boolean {
+    return (
+      this.selectedAssigned !== ASSIGNED_DEFAULT &&
+      this.selectedStatus !== STATUS_DEFAULT &&
+      this.selectedPriority !== PRIORITY_DEFAULT
+    );
+  }
+
 
   //Dropdown Toggles
   toggleAssigned() {
-    console.log("clicked")
     this.isAssignedOpen = !this.isAssignedOpen;
     this.closeOthers('assigned');
   }
@@ -125,13 +137,14 @@ export class TaskFormComponent implements OnInit {
 
   // Reset Form
   private resetForm() {
-    this.selectedAssigned = 'Select a User';
-    this.selectedStatus = 'Select Status';
-    this.selectedPriority = 'Select Priority';
+    this.selectedAssigned = ASSIGNED_DEFAULT;
+    this.selectedStatus = STATUS_DEFAULT;
+    this.selectedPriority = PRIORITY_DEFAULT;
     this.dueDate = '';
     this.description = '';
     this.selectedTask = null;
   }
+
 
   // Close Form
   closeModal() {
@@ -139,27 +152,29 @@ export class TaskFormComponent implements OnInit {
     this.modalService.close();
   }
 
-
   // Add/Edit Task
   submit() {
+
+    if (!this.isFormValid) {
+      return;
+    }
+
     if (this.modalType === 'editForm' && this.selectedTask) {
-      // Update Task List
       this.taskService.updateTask({
         id: this.selectedTask.id,
-        status: this.selectedStatus,
         assignedTo: this.selectedAssigned,
-        dueDate: this.dueDate,
+        status: this.selectedStatus,
         priority: this.selectedPriority,
-        comments: this.description,
+        dueDate: this.dueDate,
+        comments: this.description
       });
     } else {
-      // Add Task List
       this.taskService.addTask({
-        status: this.selectedStatus,
         assignedTo: this.selectedAssigned,
-        dueDate: this.dueDate,
+        status: this.selectedStatus,
         priority: this.selectedPriority,
-        comments: this.description,
+        dueDate: this.dueDate,
+        comments: this.description
       });
     }
 

@@ -213,7 +213,7 @@
             <div class="slds-modal__footer">
                 <button class="slds-button slds-button_neutral" aria-label="Cancel and close"
                     (click)="closeModal()">Cancel</button>
-                <button class="slds-button slds-button_brand" (click)="submit()">Save</button>
+                <button class="slds-button slds-button_brand" (click)="submit()" [disabled]="!isFormValid">Save</button>
             </div>
         </div>
     </section>
