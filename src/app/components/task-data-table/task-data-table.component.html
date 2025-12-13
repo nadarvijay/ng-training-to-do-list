@@ -137,7 +137,7 @@
         </thead>
         <tbody>
             @for (task of tasks; track task.id) {
-            <tr aria-selected="false" class="slds-hint-parent">
+            <tr aria-selected="false" [class.highlight-row]="task.id === highlightedTaskId" class="slds-hint-parent">
                 <td class="slds-text-align_right slds-cell_action-mode" role="gridcell">
                     <div class="slds-checkbox">
                         <input type="checkbox" [id]="'checkbox-' + task.id" [value]="task.id" tabindex="0"

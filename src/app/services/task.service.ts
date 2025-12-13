@@ -12,11 +12,13 @@ export class TaskService {
   private tasksSubject = new BehaviorSubject<Task[]>(TASK_DATA);
   private pageSizeSubject = new BehaviorSubject<number>(10);
   private currentPageSubject = new BehaviorSubject<number>(1);
+  private highlightedTaskIdSubject = new BehaviorSubject<string | null>(null);
 
   // PUBLIC OBSERVABLES
   tasks$ = this.tasksSubject.asObservable();
   pageSize$ = this.pageSizeSubject.asObservable();
   currentPage$ = this.currentPageSubject.asObservable();
+  highlightedTaskId$ = this.highlightedTaskIdSubject.asObservable();
 
   // PAGINATED TASKS
   pagedTasks$ = combineLatest([
@@ -42,6 +44,7 @@ export class TaskService {
   addTask(task: Task) {
     const newTask = { ...task, id: crypto.randomUUID() };
     this.tasksSubject.next([newTask, ...this.tasksSubject.value]);
+    this.triggerHighlight(newTask.id);
   }
 
   updateTask(updatedTask: Task) {
@@ -50,6 +53,8 @@ export class TaskService {
         task.id === updatedTask.id ? updatedTask : task
       )
     );
+
+    if (updatedTask.id) this.triggerHighlight(updatedTask.id);
   }
 
   deleteTask(taskId: string | undefined) {
@@ -90,5 +95,14 @@ export class TaskService {
     this.pageSizeSubject.next(10);
     this.currentPageSubject.next(1);
   }
+
+  private triggerHighlight(taskId: string) {
+    this.highlightedTaskIdSubject.next(taskId);
+
+    setTimeout(() => {
+      this.highlightedTaskIdSubject.next(null);
+    }, 4000);
+  }
+
 
 }

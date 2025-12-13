@@ -25,12 +25,19 @@ export class TaskDataTableComponent implements OnDestroy {
       .subscribe(tasks => {
         this.tasks = tasks;
       });
+
+    this.taskService.highlightedTaskId$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(id => {
+        this.highlightedTaskId = id;
+      });
   }
 
   tasks: Task[] = []
   showMenu = false;
   selectedTask: Task | null = null;
   private destroy$ = new Subject<void>();
+  highlightedTaskId: string | null = null;
 
   dropdownPosition = {
     top: '0px',
@@ -52,7 +59,6 @@ export class TaskDataTableComponent implements OnDestroy {
 
 
   editTask(task: Task) {
-    console.log('Edit:', task);
     this.modalService.openEditForm(task);
     this.showMenu = false;
   }
