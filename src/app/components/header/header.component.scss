@@ -2,7 +2,8 @@
     background-color: #F5F5F5;
     display: flex;
     justify-content: space-between;
-    height: 15%;
+    height: auto;
+    flex-shrink: 0;
 
     .left-header {
         padding-left: 20px;
