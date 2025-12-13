@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TaskListComponent, TaskFormComponent, DeleteModalComponent, CommonModule],
+  imports: [TaskListComponent, TaskFormComponent, DeleteModalComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

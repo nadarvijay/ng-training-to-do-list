@@ -23,7 +23,7 @@ export class TaskDataTableComponent {
   ) { }
 
   ngOnInit() {
-    this.taskService.tasks$.subscribe(tasks => {
+    this.taskService.pagedTasks$.subscribe(tasks => {
       this.tasks = tasks;
     });
   }

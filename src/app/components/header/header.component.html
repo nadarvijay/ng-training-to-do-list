@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="records-count">
-            4 records
+            {{(taskService.pagedTasks$ | async)?.length+ " records"}}
         </div>
     </div>
     <div class="right-header">
